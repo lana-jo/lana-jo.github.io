@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Lana J</title>
+</head>
+<body>
+    <div id="app" class="w-screen h-screen bg-[#121212]">
+        <!-- Top -->
+        <div class="w-full h-[7%] bg-[#1C1C1C] flex items-center px-4">
+            <div class="flex gap-x-2">
+                <div class="rounded-full bg-red-600 h-4 w-4"></div>
+                <div class="rounded-full bg-yellow-600 h-4 w-4"></div>
+                <div class="rounded-full bg-green-600 h-4 w-4"></div>
+            </div>
+        </div>
+        <!-- Content -->
+        <div class="w-full h-[93%] flex flex-col-reverse md:flex-row justify-between items-center px-5 md:px-[10%] mx-auto max-w-full md:max-w-[1200px]">
+            <div class="w-full h-full flex justify-center md:justify-start items-center">
+                <!-- PROFILE -->
+                <div class="absolute duration-1000" :class="menu[0].value ? 'opacity-1' : 'opacity-0'">
+                    <div class="flex flex-col md:flex-row items-center gap-x-0 md:gap-x-[60px] duration-1000" :class="menu[0].value ? 'opacity-1' : 'opacity-0'">
+                        <!-- PHOTO -->
+                        <div class="w-[38%]">
+                            <img src="./img/profile.png" alt="profile">
+                        </div>
+                        <!-- ABOUT -->
+                        <div class="flex flex-col gap-y-3 text-center md:text-left">
+                            <!-- NAME -->
+                            <div class="w-full md:w-[300px] flex flex-wrap text-gray-300 text-[25px] md:text-[30px] font-bold px-5 md:px-0">
+                                <h1>M. Lana Jauharul Karim Daud El Qudsy</h1>
+                            </div>
+                            <!-- TITLE -->
+                            <span class="text-gray-300 text-[17px] md:text-[20px]">Junior Programmer</span>
+                            <!-- ABOUT -->
+                            <div class="w-full md:w-[300px] px-5 md:px-0 flex flex-wrap text-gray-300 text-[14px] md:text-sm">
+                                <p>Enthusiastic and detail-oriented Junior Programmer with a solid foundation in computer science and programming languages.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- SKILLS -->
+                <div class="absolute duration-1000" :class="menu[1].value ? 'opacity-1' : 'opacity-0'">
+                    <div class="w-full md:w-[60vw] h-[63vh] md:h-max overflow-y-scroll flex flex-wrap items-center justify-center md:justify-start gap-x-5 gap-y-5 duration-1000" :class="menu[1].value ? 'opacity-1' : 'opacity-0'">
+                        <div v-for="s in skills" class="flex items-center justify-center bg-white/10 rounded-lg h-[130px] md:h-[150px] w-[130px] md:w-[150px]">
+                            <img :src="s" alt="skills">
+                        </div>
+                    </div>
+                </div>
+                <!-- EXPERIENCE -->
+                <div class="absolute duration-1000" :class="menu[2].value ? 'opacity-1' : 'opacity-0'">
+                    <div class="w-[55vw] flex flex-col gap-y-2 items-start rounded border border-white/10 p-3" :class="menu[2].value ? 'opacity-1' : 'opacity-0'">
+                        <div class="flex gap-x-5 items-start">
+                            <div class="h-4 w-4 bg-white/50 rounded-full mt-2"></div>
+                            <div class="w-300 flex flex-col gap-y-1 flex-wrap">
+                                <h1 class="text-xl text-white">Enthrenship-Junior Programmer</h1>
+                                <span class="text-white/90">CV. Umbrella Corporation</span>
+                                <span class="text-sm text-white/70">2021</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2 [55vw] flex flex-col gap-y-2 items-start rounded border border-white/10 p-3" :class="menu[2].value ? 'opacity-1' : 'opacity-0'">
+                        <div class="flex gap-x-5 items-start">
+                            <div class="h-4 w-4 bg-white/50 rounded-full mt-2"></div>
+                            <div class="w-300 flex flex-col gap-y-1 flex-wrap">
+                                <h1 class="text-xl text-white">Junior Programmer</h1>
+                                <span class="text-white/90">PT. Bangun Nusa network</span>
+                                <span class="text-sm text-white/70">2023</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- PROJECT -->
+                <div class="absolute duration-1000" :class="menu[3].value ? 'opacity-1' : 'opacity-0'">
+                    <div class="w-[55vw] h-[65vh] overflow-y-scroll flex flex-wrap items-center justify-start gap-x-5 gap-y-5 duration-1000" :class="menu[3].value ? 'opacity-1' : 'opacity-0'">
+                        <div class="flex flex-col items-center justify-center bg-white/10 rounded-lg">
+                            <img src="./img/project1.jpeg">
+                            <div class="w-full p-5 bg-gray/10">
+                                <span class="text-white">Applikasi Peminjaman Ruang</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- BUTTON -->
+            <div class="flex flex-row md:flex-col flex-wrap gap-y-3 gap-x-3 mt-3 md:mt-0 justify-center text-sm text-gray-300 z-10">
+                <template v-for="m in menu">
+                    <button class="h-11 w-32 rounded-full border border-gray-300 hover:bg-white/10" :class="m.value ? 'bg-white/10' : ''" @click="active(m.key)">{{ m.key }}</button>
+                </template>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
